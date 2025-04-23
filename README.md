@@ -37,8 +37,8 @@ Follow these steps to set up and run the app locally.
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/autosearch-pro.git
-   cd autosearch-pro
+   git clone https://github.com/Karthikk7293/autocomplete-search-bar.git
+   cd autocomplete-search-bar
    ```
 2. Install dependencies using `pnpm`:
    ```bash
@@ -71,7 +71,7 @@ Deploy your app to Vercel in just a few steps.
      ```
    - Follow the prompts to configure your project (e.g., select the project name, framework as Vite).
 4. **Access Your Deployed App**:
-   - Once deployed, Vercel will provide a URL (e.g., `https://autosearch-pro.vercel.app`).
+   - Once deployed, Vercel will provide a URL (e.g., `https://autocomplete-search-bar-chi.vercel.app`).
 
 ---
 
