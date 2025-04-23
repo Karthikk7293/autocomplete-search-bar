@@ -60,7 +60,7 @@ Follow the prompts to configure your project (e.g., select the project name, fra
 
 
 Access Your Deployed App:
-Once deployed, Vercel will provide a URL (e.g., https://autocomplete-seach-bar.vercel.app).
+Once deployed, Vercel will provide a URL (e.g., https://autocomplete-search-bar-chi.vercel.app).
 
 
 
