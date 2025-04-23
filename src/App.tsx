@@ -1,16 +1,28 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
+interface DynamicObject {
+  [key: string]: any;
+}
+
 function App() {
 
   const [results, setResults] = useState([]);
   const [input, setInput] = useState("");
   const [showResults, setShowResults] = useState(true)
+  const [cache, setCache] = useState<DynamicObject>({});
 
   const fetchData = async () => {
+    if (cache[input]) {
+      setResults(cache[input])
+      console.log('Cashed Data');
+      return
+    }
+
     const resultData = await fetch(`https://dummyjson.com/recipes/search?q=${input}`)
     const responseJson = await resultData.json()
-    console.log(responseJson);
+    setCache((prev: any) => ({ ...prev, [input]: responseJson.recipes }))
+    console.log('New API call');
     setResults(responseJson.recipes)
 
   }
