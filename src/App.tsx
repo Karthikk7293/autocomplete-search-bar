@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -17,7 +15,7 @@ function App() {
 
   }
   useEffect(() => {
-    const timer = setTimeout(fetchData, 500);
+    setTimeout(fetchData, 500);
 
     // return clearTimeout(timer)
 
