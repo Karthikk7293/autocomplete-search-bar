@@ -1,33 +1,45 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [results, setResults] = useState([]);
+  const [input, setInput] = useState("");
+  const [showResults, setShowResults] = useState(true)
+
+  const fetchData = async () => {
+    const resultData = await fetch(`https://dummyjson.com/recipes/search?q=${input}`)
+    const responseJson = await resultData.json()
+    console.log(responseJson);
+    setResults(responseJson.recipes)
+
+  }
+  useEffect(() => {
+    const timer = setTimeout(fetchData, 500);
+
+    // return clearTimeout(timer)
+
+  }, [input])
+
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>AutoComplete search bar</h1>
+      <div className='container'>
+        <div className='input-container'>
+          <input
+            type="text"
+            value={input}
+            onChange={((e) => setInput(e.target.value))}
+            onFocus={(() => setShowResults(true))}
+            onBlur={(() => setShowResults(false))} />
+        </div>
+        {showResults && <div className='result-container'>
+          {results.map((item: any) => <span key={item?.id} className='result'>{item?.name}</span>)}
+        </div>}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
